@@ -1,0 +1,120 @@
+*
+{
+margin:0;
+padding:0;
+}
+
+
+input, select, option {
+font-family: 'Signika', sans-serif;  
+}
+
+body 
+{ 
+font-family: 'Signika', sans-serif; 
+font-size:1em; 
+color:#575757; 
+line-height:20px; 
+margin:0px; 
+padding:0px; 
+}
+
+
+#container {
+background:none;
+width: 450px;
+height:700px;
+margin: 0 auto;	
+position: relative;
+top:50px;
+}
+
+#container form {
+
+background: #fff;
+border: 1px solid #ebebeb;
+border-radius: 10px;
+box-shadow: 0 0 2px 1px #ebebeb;
+padding: 15px 30px 10px 30px;
+}
+
+#container h2{
+text-align: left;
+font-size: 27px;
+text-shadow: 0px 1px 1px #e4ebe9;
+color: #000;
+margin: 0px;
+margin-bottom: 30px;
+margin-top: 30px;
+}
+
+#container input[type=checkbox] {
+color: #666666;
+font-size: 14px;
+margin-bottom: 10px;
+}
+
+#container input[type=text], #container input[type=password], #container input[type=email], #container input[type=tel],  #container select, #container input[type=submit], #container textarea, #container button{
+	
+background-color: white;
+border: 1px solid #cccccc;
+box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+color: #666666;
+display: block;
+font-size: 14px;
+padding: 3px 6px;
+width: 300px;
+height: 30px;
+margin-bottom: 10px;
+transition:all 0.3s ease-in-out 0s;
+transition:background 0.3s ease-in-out 0s;
+transition:border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+
+
+
+#container button, #container input[type=submit]  {
+background-color:#2b68a8;
+color:#fff;
+width: 300px;
+vertical-align: middle;
+text-align:center;
+text-transform:uppercase;
+font-weight:bold;
+transition:all 0.3s ease-in-out 0s;
+}
+
+
+#container button:hover, #container input[type=submit]:hover {
+background:#16508e;
+cursor:pointer;
+}
+
+#container label {
+display: inline-block;
+font-weight:bold;
+font-size: 14px;
+color: #666;
+padding: 5px;
+margin-bottom: 5px;
+}
+
+
+
+.formError {
+border: 1px solid #f00;
+content:attr('placeholder');
+background:#f00;
+}
+
+.success
+{
+	background-color: #89F178;
+	color: #074F0F;
+}
+
+.failure
+{
+	background-color: #FBABAD;
+	color: #5E1315;
+}

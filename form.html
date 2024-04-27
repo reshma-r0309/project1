@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>formvalidation practice</title>
+<link type="text/css" rel="stylesheet" href="main_style.css">
+</head>
+
+<body>
+	<div id="container">
+	   <form id = "register" method="GET">
+			<h2> Create your BookMyTrip Account</h2>
+			<label> First Name </label><br>
+			<input type="text" id="firstname" placeholder="Enter your first name"><br>
+			<label> Last Name </label><br>
+			<input type="text" name="lastname" id="lastname" placeholder="Enter your lastname"><br>
+			<label> Mobile number </label><br>
+			<input type="text" name="mobile" id="mobile" placeholder="Enter your mobile number"><br>
+			<label> Email </label><br>
+			<input type="text" name="email" id="email" placeholder="Enter your email id"><br>
+			<label> Password </label><br>
+			<input type="password" name="password" id="password" placeholder="Enter your password"><br>
+
+			<label>Gender</label><br>
+			<input type="radio" id="gender" name="male" value="male">
+			<label>Male</label>
+			<input type="radio" name="female" value="female">
+			<label>Female</label><br>
+
+			<label>City</label>
+			<select id="City" name="City">
+				<option value="">Choose...</option>
+				<option value="chennai">Chennai</option>
+				<option value="bangalore">Bangalore</option>
+				<option value="mumbai">Mumbai</option>
+				<option value="delhi">Delhi</option>
+				<option value="Guragon">Guragon</option>
+				<option value="kochi">kochi</option>
+				<option value="hyderabad">Hyderabad</option>
+			</select>
+			 <br>
+			<label>
+			<input type="checkbox" id="user" name="user">
+			I would like to be kept informed of special promotions and offers by BookMyTrip. 
+			</label>
+			 <br>
+
+			 <input type="submit" id="submit" value="Register">
+
+		
+		</form>
+	  </div>
+	<script>
+	 var target1=document.querySelector('#register');
+	 target1.addEventListener('submit',function(eve){
+		 eve.preventDefault();
+		 resetForm();
+		 validate(eve);
+		 
+	 },false);
+		
+		
+		function validate(eve){
+			errorcount=0;
+			if(eve.target.firstname.value==''||eve.target.firstname.value.length==0)
+				{
+					errorcount++;
+					eve.target.firstname.style.border='2px solid red';
+					eve.target.firstname.setAttribute("placeholder","please enter your firstname");
+				}
+			
+			if(eve.target.lastname.value==''||eve.target.lastname.value.length==0)
+				{
+					errorcount++;
+					eve.target.lastname.style.border='2px solid red';
+					eve.target.lastname.setAttribute("placeholder","please enter your lastname");
+				}
+			
+			if(eve.target.mobile.value==''|| eve.target.mobile.value.length==0)
+				{
+					errorcount++;
+					eve.target.mobile.style.border='2px solid red';
+				}
+			else
+			{
+				if(isValidTelephoneNumber(eve.target.mobile.value)==false)
+					{
+						eve.target.mobile.style.border='2px solid red';
+						eve.target.mobile.value="";
+						eve.target.mobile.setAttribute("placeholder","invalid phone number");
+						errorcount++;
+					}
+			}
+			
+			if(eve.target.email.value==''|| eve.target.email.value.length==0)
+				{
+					errorcount++;
+					eve.target.email.style.border='2px solid red';
+				}
+			else
+			{
+				if(isValidEmail(eve.target.email.value)==false)
+					{
+						eve.target.email.style.border='2px solid red';
+						eve.target.email.value="";
+						eve.target.email.setAttribute("placeholder","invalid phone number");
+						errorcount++;
+					}
+			}
+			if(eve.target.password.value==''||eve.target.password.value.length==0)
+				{
+					errorcount++;
+					eve.target.password.style.border='2px solid red';
+					eve.target.password.setAttribute("placeholder","please enter your password")
+				}
+	
+		
+		var msg=document.createElement("div");
+			msg.id = "form-status";
+	        document.getElementById("register").insertBefore(msg, document.querySelector("#firstname").previousElementSibling);
+		
+			if(errorcount==0)
+				{
+					document.forms.register.submit();
+				}
+			else
+				{
+				msg.innerHTML="form has "+ errorcount + "  errors.Please correct and resubmit";
+				msg.className="failure";
+				}
+		}
+		
+		
+		
+	function isValidTelephoneNumber(telno)
+		{
+			var myphoneregex= /^((\+)?[9][1](\s)?(\-)?(\s)?)?[789]\d{9}$/ ;
+			return myphoneregex.test(telno);
+		}
+	
+	function isValidEmail(emailid)
+		{
+			var myemailregex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+			return myemailregex.test(emailid);
+		}
+		
+	 function resetForm()
+	{
+		for(var i = 0; i<=8; i++)
+		  if(i!=5||i!=6||i!=7||i!=8)
+		      document.forms.register[i].style.border = "1px solid #ccc";
+	}
+	
+	</script>
+	</body>
+</html>
